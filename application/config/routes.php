@@ -41,8 +41,10 @@
 
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
-$route['dianping/search'] = 'Search/search';
-$route['dianping'] = 'Search';
+$route['search_view/search'] = 'search_ctl/search';
+$route['search_view'] = 'search_ctl/search';
+//$route['users_view/login'] = 'users_ctl/login';
+//$route['users_ctl'] = 'users_ctl/login';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
