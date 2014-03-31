@@ -38,8 +38,11 @@
 |
 */
 
+
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
+$route['dianping/search'] = 'Search/search';
+$route['dianping'] = 'Search';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
