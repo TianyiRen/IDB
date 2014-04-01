@@ -21,9 +21,14 @@ class Search_ctrl extends CI_Controller
 		else
 		{
 			$partialInfo1 = $this->search_model->search_restaurants();
-			//$partialInfo2 = $this->search_model->search_dishes();
-			//$totalInfo = array_merge($partialInfo1,$partialInfo2);
-			//$data['restaurantList'] = array_unique($totalInfo);
+			$partialInfo2 = $this->search_model->search_dishes();
+			foreach($partialInfo2 AS $item)
+			{
+				if (!in_array($item, $partialInfo1))
+				{
+					array_push($partialInfo1, $item);
+				}
+			}
 			$data['restaurantList'] = $partialInfo1;
 			
 			$this->load->view('templates/header');
