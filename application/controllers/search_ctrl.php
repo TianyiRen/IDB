@@ -32,6 +32,7 @@ class Search_ctrl extends CI_Controller
 			$data['restaurantList'] = $partialInfo1;
 			
 			$this->load->view('templates/header');
+			$this->load->view('search_view/search');
 			$this->load->view('restaurantList_view/show', $data);    
 			$this->load->view('templates/footer');
 		}
