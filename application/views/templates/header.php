@@ -6,4 +6,7 @@
 </head>
 
 <body>
-  <h1> I Love Eating !!!</h1>
+  <h1><a 
+  style="text-decoration:none;color:green;font-weight:bold;" 
+  href = "http://localhost/IDB/index.php/search"> I Love Eating !!! 
+  </a></h1>

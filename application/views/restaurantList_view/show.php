@@ -4,7 +4,11 @@
 		<?php echo $restaurant_item['RESTAURANTADDRESS']?>
 		<?php echo $restaurant_item['RESTAURANTID']?>
 	</div>
-	<p><a href = "http://localhost/IDB/index.php/restaurantInfo/00000000011">Details</a></p>
+	<?php
+		$url = "http://localhost/IDB/index.php/restaurantInfo/";
+		$url = $url . (string)$restaurant_item['RESTAURANTID'];
+	?>
+	<p><a href = <?php echo $url ?>>Details</a></p>
 	
 <?php endforeach ?>
 		
