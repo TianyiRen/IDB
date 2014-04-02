@@ -5,16 +5,29 @@ class Search_ctrl extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('search_model');
+		$this->load->library('session');
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
 	}
 	public function search()
 	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
+		//test session
+		$userdata = 	array(
+						'user_name'  => 'TianTian',
+						'user_id'    => 'imKaopuness@columbia.edu',
+						'logged_in' => True
+						);
+
+		$this->session->set_userdata($userdata);
+		
+		$user_data = $this->session->all_userdata();
 		
 		$this->form_validation->set_rules('searchBox', 'Title', 'required');
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('templates/header');
+			$this->load->view('templates/navigation', $user_data);
 			$this->load->view('search_view/search');   
 			$this->load->view('templates/footer');
 		}
@@ -32,6 +45,7 @@ class Search_ctrl extends CI_Controller
 			$data['restaurantList'] = $partialInfo1;
 			
 			$this->load->view('templates/header');
+			$this->load->view('templates/navigation', $user_data);
 			$this->load->view('search_view/search');
 			$this->load->view('restaurantList_view/show', $data);    
 			$this->load->view('templates/footer');

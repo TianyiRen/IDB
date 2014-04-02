@@ -15,6 +15,8 @@
 |
 */
 $config['base_url']	= '';
+$config['site_url']	= 'http://localhost/IDB/index.php/';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +226,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'AIzaSyAdpaZqPgCVg9q1_KIeL8Y_9111';
 
 /*
 |--------------------------------------------------------------------------
