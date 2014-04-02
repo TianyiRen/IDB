@@ -33,6 +33,35 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	public function search_rreview($ID)	
+	{
+		$query = "
+					SELECT 	r.reviewTitle as TITLE,
+							r.reviewContent as CONTENT,
+							r.reviewScore as SCORE,
+							r.reviewPrice as PRICE,
+							r.environment as ENVIRONMENT,
+							r.services as SERVICES
+					FROM writtenTogetherRT w, RestaurantReviews r
+					WHERE w.restaurantID = $ID AND w.reviewID = r.reviewID";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+	public function search_dreview($ID)
+	{
+		$query = "
+					SELECT 	r.reviewTitle as TITLE,
+							r.reviewContent as CONTENT,
+							r.reviewScore as SCORE,
+							r.reviewPrice as PRICE,
+							r.taste as TASTE,
+							r.volumn as VOLUMN,
+							R.look as LOOK
+					FROM Dishes d, writtenTogetherDT w, DishReviews r
+					WHERE d.restaurantID = $ID AND d.dishID = writtenTogetherDT.dishID AND r.reviewID = w.reviewID";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
 }
 
 

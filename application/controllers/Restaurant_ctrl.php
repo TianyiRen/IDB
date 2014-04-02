@@ -19,6 +19,9 @@ class Restaurant_ctrl extends CI_Controller
 		$dishInfo = $this->restaurant_model->search_dish($restaurantID);
 		$data['dishInfo'] = $dishInfo;
 		
+		$rReviewInfo = $this->restaurant_model->search_rreview($restaurantID);
+		$data['rReviewInfo'] = $rReviewInfo;
+		
 		//show header, searchBox, restaurantView and footer
 		$this->load->view('templates/header');
 		$this->load->view('search_view/search');
@@ -26,5 +29,6 @@ class Restaurant_ctrl extends CI_Controller
 		$this->load->view('templates/footer');
 		
 	}	
+	
 }
 ?>

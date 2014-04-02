@@ -78,5 +78,6 @@ class User_ctrl extends CI_Controller
 		echo "</script>";
 
 	}
+
 }
 ?>

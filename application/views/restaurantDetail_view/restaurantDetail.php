@@ -16,3 +16,18 @@
 	<?php endforeach?>
 	</div>
 <?php endforeach?>
+
+<br>
+<br>
+
+<h2> Review Info: </h2>
+<?php foreach($rReviewInfo AS $rReviewDetail):?>
+	<div id="main" >
+	<?php foreach ($rReviewDetail as $key=>$value): ?>
+		<div>
+		<?php echo $key . " ===> " . $value;?>
+		</div>
+	<?php endforeach?>
+	<br>
+	</div>
+<?php endforeach?>
