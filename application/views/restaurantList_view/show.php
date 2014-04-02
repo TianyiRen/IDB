@@ -8,7 +8,7 @@
 		$url = "http://localhost/IDB/index.php/restaurantInfo/";
 		$url = $url . (string)$restaurant_item['RESTAURANTID'];
 	?>
-	<p><a href = <?php echo $url ?>>Details</a></p>
+	<p><a href = <?php echo $url ?>>Restaurant Details</a></p>
 	
 <?php endforeach ?>
 		
