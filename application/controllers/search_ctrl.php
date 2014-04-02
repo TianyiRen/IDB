@@ -13,13 +13,13 @@ class Search_ctrl extends CI_Controller
 	public function search()
 	{
 		//test session
-		$userdata = 	array(
-						'user_name'  => 'TianTian',
-						'user_id'    => 'imKaopuness@columbia.edu',
-						'logged_in' => True
-						);
+		// $userdata = 	array(
+						// 'user_name'  => 'TianTian',
+						// 'user_id'    => 'imKaopuness@columbia.edu',
+						// 'logged_in' => false
+						// );
 
-		$this->session->set_userdata($userdata);
+		// $this->session->set_userdata($userdata);
 		
 		$user_data = $this->session->all_userdata();
 		
