@@ -142,9 +142,10 @@ class User_ctrl extends CI_Controller
 			
 			else //success
 			{
+				
 				$signup_Info = array(
 						'user_name'  => $signupResult['name'],
-						'user_email' => $user_Email,
+						'user_email' => $signupInfo['user_Email'],
 						'logged_in' => true
 						);
 				$this->session->set_userdata($signup_Info);
@@ -153,7 +154,7 @@ class User_ctrl extends CI_Controller
 				echo "<script type='text/javascript'>";  
 				echo "window.location.href='$url'";  
 				echo "</script>";   
-
+				
 			}
 		}
 	}

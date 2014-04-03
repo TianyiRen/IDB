@@ -75,12 +75,12 @@ class User_model extends CI_Model
 		else  //input right
 		{
 			$userID = "
-						SELECT max(U.userID) as max
-						FROM Users U";
+						SELECT max(TO_NUMBER(U.userID)) as max
+						FROM Users U
+					";
 			$userID = $this->db->query($userID);
 			$userID = $userID->result_array();
 			$userID = $userID[0]['MAX'];
-			print_r($userID);
 			$userID = (int)$userID;
 			$userID = $userID + 1;
 			$userID = (string)$userID;
@@ -96,7 +96,6 @@ class User_model extends CI_Model
 			$resData['type'] = 'signupSuccess';	
 			$resData['name'] = $result[0]['NAME'];	
 		}
-		//$resData['miao'] = "miao";
 		return $resData;
 	}
 	
