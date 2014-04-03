@@ -58,7 +58,11 @@ class Restaurant_ctrl extends CI_Controller
 		}
 		else // put data into DB and then jump to detail page
 		{
-			$this->load->view('templates/header');
+			$this->restaurant_model->upload_review($data);
+			$url = site_url('restaurantInfo/' . $restaurantID);  
+			echo "<script type='text/javascript'>";  
+			echo "window.location.href='$url'";  
+			echo "</script>";   
 		}
 		
 		

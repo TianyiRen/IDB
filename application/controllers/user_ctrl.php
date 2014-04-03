@@ -49,6 +49,7 @@ class User_ctrl extends CI_Controller
 			{
 				$loginInfo = array(
 						'user_name'  => $loginResult['name'],
+						'user_ID' => $loginResult['ID'],
 						'user_email' => $userEmail,
 						'logged_in' => true
 						);
@@ -67,6 +68,7 @@ class User_ctrl extends CI_Controller
 	{
 		$logoutInfo = array(
 					'user_name'  => null,
+					'user_ID' => null,
 					'user_email' => null,
 					'logged_in' => false
 					);
@@ -145,6 +147,7 @@ class User_ctrl extends CI_Controller
 				
 				$signup_Info = array(
 						'user_name'  => $signupResult['name'],
+						'user_ID' => $signupResult['ID'],
 						'user_email' => $signupInfo['user_Email'],
 						'logged_in' => true
 						);

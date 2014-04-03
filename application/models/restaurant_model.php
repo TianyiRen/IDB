@@ -65,6 +65,32 @@ class Restaurant_model extends CI_Model
 	
 	public function upload_review($data)
 	{
+		$userID = $data['user_data']['user_ID'];
+		$restaurantID = $data['restaurantID'];
+		$reviewTitle = $data['reviewTitle'];
+		$reviewText = $data['reviewText'];
+		$postDate = date("m/d/y/h/i/s",time()); 
+		//echo $postDate;
+		
+		$reviewID = "SELECT max(TO_NUMBER(R.reviewID)) as max
+						FROM RestaurantReviews R";
+		$reviewID = $this->db->query($reviewID)->result_array();
+		$reviewID = (int)$reviewID[0]['MAX'] + 1;
+		$reviewID = (string)$reviewID;
+		
+		
+		$insertReview = "
+					INSERT INTO RestaurantReviews (reviewID, reviewTitle, reviewContent, reviewScore,
+													reviewPrice, environment, services)
+					VALUES ('$reviewID', '$reviewTitle', '$reviewText', 5, 5, 5, 5)
+					";
+		$this->db->query($insertReview);
+		
+		$insertRT = "
+					INSERT INTO writtenTogetherRT (tagID, reviewID, userID, restaurantID, postedDate)
+					VALUES ('0000000005', '$reviewID', '$userID', '$restaurantID', TO_DATE('$postDate', 'mm/dd/yy/hh/mi/ss'))
+					";
+		$this->db->query($insertRT);
 		
 	}
 }

@@ -10,7 +10,7 @@ class User_model extends CI_Model
 	public function login($userEmail, $userPwd)
 	{
 		$query = "
-				SELECT U.userPassword as pwd, U.userName as name
+				SELECT U.userPassword as pwd, U.userName as name, U.userID as ID
 				FROM Users U
 				WHERE U.userEmail = '$userEmail'
 				";
@@ -24,6 +24,7 @@ class User_model extends CI_Model
 		{
 			$resData['type'] = 'Success';	
 			$resData['name'] = $result[0]['NAME'];	
+			$resData['ID'] = $result[0]['ID'];
 		}
 		else
 		{
@@ -95,6 +96,7 @@ class User_model extends CI_Model
 			$result = $result->result_array();
 			$resData['type'] = 'signupSuccess';	
 			$resData['name'] = $result[0]['NAME'];	
+			$resData['ID'] = $userID;
 		}
 		return $resData;
 	}
