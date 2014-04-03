@@ -45,6 +45,7 @@ $route['search'] = 'Search_ctrl/search';
 $route['restaurantInfo/(:any)'] = 'Restaurant_ctrl/viewRes/$1';
 $route['login'] = 'User_ctrl/login';
 $route['logout'] = 'User_ctrl/logout';
+//$route['submitReview/(:any)'] = 'Restaurant_ctrl/submitReview/$1';
 //$route['search_view'] = 'Search_ctrl/search';
 //$route['users_view/login'] = 'users_ctl/login';
 //$route['users_ctl'] = 'users_ctl/login';

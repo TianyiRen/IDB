@@ -62,6 +62,11 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	
+	public function upload_review($data)
+	{
+		
+	}
 }
 
 
