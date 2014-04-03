@@ -7,8 +7,9 @@
       <li><a href="<?php echo site_url('search') ?>">Home</a></li>
 	  <?php if(empty($logged_in)): ?>
 	  <li><a href="<?php echo site_url('login') ?>">Log In</a></li>
+	  <li><a href="<?php echo site_url('signup') ?>">Sign Up</a></li>
 	  <?php else: ?>
-      <li><a href="<?php echo site_url('users/view/'.$user_id) ?>"><?php echo $user_name ?>'s Profile</a></li>
+      <li><a href="<?php echo site_url('users/view/') ?>"><?php echo $user_name ?>'s Profile</a></li>
 	  <li><a href="<?php echo site_url('users/setting') ?>">Setting</a></li>
 	  <li><a href="<?php echo site_url('logout') ?>">Log Out</a></li>
 	  <?php endif ?>

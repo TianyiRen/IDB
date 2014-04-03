@@ -78,6 +78,84 @@ class User_ctrl extends CI_Controller
 		echo "</script>";
 
 	}
+	public function signup()
+	{
+		$this->form_validation->set_rules('userEmail', 'Email', 'required');
+		$this->form_validation->set_rules('userName', 'Name', 'required');
+		$this->form_validation->set_rules('userGender', 'Gender', 'required');
+		$this->form_validation->set_rules('userPassword', 'Password', 'required');
+		$this->form_validation->set_rules('userPasswordAgain', 'PasswordAgain', 'required');
+		
+		$user_data = $this->session->all_userdata();
+		if($this->form_validation->run() === FALSE)
+		 {
+			 $this->load->view('templates/header');
+			 //$this->load->view('templates/navigation', $user_data);
+			 $this->load->view('user_view/signup');
+			 $this->load->view('templates/footer');
+		 }
+		else
+		{
+			$signupInfo['user_Email'] = $this->input->post('userEmail');
+			$signupInfo['user_Name'] = $this->input->post('userName');
+			$signupInfo['user_Gender'] = $this->input->post('userGender');
+			$signupInfo['user_Password'] = $this->input->post('userPassword');
+			$signupInfo['user_Password_Again'] = $this->input->post('userPasswordAgain');
+			$signupResult = $this->User_model->signup($signupInfo);
+			
+			if($signupResult['type']==='invalidPwd')
+			{
+				$this->load->view('templates/header');
+				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('user_view/signup');
+				$this->load->view('user_view/signupErrors/invalidPwd');
+				$this->load->view('templates/footer');	
+			}
+			else if($signupResult['type']==='retypePwd')
+			{
+				$this->load->view('templates/header');
+				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('user_view/signup');
+				$this->load->view('user_view/signupErrors/retypePwd');
+				$this->load->view('templates/footer');		
+			}
+			else if($signupResult['type'] === 'alreadyExists')
+			{
+				$this->load->view('templates/header');
+				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('user_view/signup');
+				$this->load->view('user_view/signupErrors/alreadyExists');
+				$this->load->view('templates/footer');
+			}
+			else if($signupResult['type'] === 'EmailCannotBeBlank')
+			{
+			}
+			else if($signupResult['type'] === 'NameCannotBeBlank')
+			{
+			}
+			else if($signupResult['type'] === 'GenderCannotBeBlank')
+			{
+			}
+			else if($signupResult['type'] === 'PasswordCannotBeBlank')
+			{
+			}
+			
+			else //success
+			{
+				$signup_Info = array(
+						'user_name'  => $signupResult['name'],
+						'user_email' => $user_Email,
+						'logged_in' => true
+						);
+				$this->session->set_userdata($signup_Info);
+				
+				$url = site_url('search');  
+				echo "<script type='text/javascript'>";  
+				echo "window.location.href='$url'";  
+				echo "</script>";   
 
+			}
+		}
+	}
 }
 ?>
