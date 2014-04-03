@@ -26,10 +26,11 @@ class Restaurant_ctrl extends CI_Controller
 		
 		//load session
 		$user_data = $this->session->all_userdata();
-		$data['userdata'] = $user_data;
+		$data['user_data'] = $user_data;
 		$data['restaurantID'] = $restaurantID;
 		
 		//show header, searchBox, restaurantView and footer
+		//If user has already logged in, show the text box of adding a comment of this restaurant.
 		$this->form_validation->set_rules('reviewTitle', 'Title', 'required');
 		$this->form_validation->set_rules('reviewText', 'Text', 'required');
 		if($this->form_validation->run() === FALSE)
@@ -37,8 +38,9 @@ class Restaurant_ctrl extends CI_Controller
 			$this->load->view('templates/header');
 			$this->load->view('templates/navigation', $user_data);
 			$this->load->view('search_view/search');
+			$this->load->view('restaurantDetail_view/map');
 			$this->load->view('restaurantDetail_view/restaurantDetail', $data);
-			if(!empty($data['userdata']['logged_in']))
+			if(!empty($data['user_data']['logged_in']))
 			{
 				$this->load->view('restaurantDetail_view/submitReview', $data);
 			}
@@ -49,18 +51,17 @@ class Restaurant_ctrl extends CI_Controller
 			$data['reviewTitle'] = $this->input->post('reviewTitle');
 			$data['reviewText'] = $this->input->post('reviewText');
 			//$data['restaurantID'] existed
-			print_r($data['userdata']);
+			print_r($data['user_data']);
 			
 			
 			$this->restaurant_model->upload_review($data);
 			
-			
-			
 			$this->load->view('templates/header');
 			$this->load->view('templates/navigation', $user_data);
 			$this->load->view('search_view/search');
+			$this->load->view('restaurantDetail_view/map');
 			$this->load->view('restaurantDetail_view/restaurantDetail', $data);
-			if(!empty($data['userdata']['logged_in']))
+			if(!empty($data['user_data']['logged_in']))
 			{
 				$this->load->view('restaurantDetail_view/uploadSuccess');
 				$this->load->view('restaurantDetail_view/submitReview', $data);
@@ -69,11 +70,7 @@ class Restaurant_ctrl extends CI_Controller
 		}
 		
 	}	
-	
-	public function submitReview($restaurantID)
-	{
-		
-	}
+
 	
 }
 ?>
