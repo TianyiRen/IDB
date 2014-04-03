@@ -31,46 +31,37 @@ class Restaurant_ctrl extends CI_Controller
 		
 		//show header, searchBox, restaurantView and footer
 		//If user has already logged in, show the text box of adding a comment of this restaurant.
-		$this->form_validation->set_rules('reviewTitle', 'Title', 'required');
-		$this->form_validation->set_rules('reviewText', 'Text', 'required');
-		if($this->form_validation->run() === FALSE)
+		$this->load->view('templates/header');
+		$this->load->view('templates/navigation', $user_data);
+		$this->load->view('search_view/search');
+		$this->load->view('restaurantDetail_view/map', $data);
+		$this->load->view('restaurantDetail_view/restaurantDetail', $data);
+		if(!empty($data['user_data']['logged_in']))
 		{
-			$this->load->view('templates/header');
-			$this->load->view('templates/navigation', $user_data);
-			$this->load->view('search_view/search');
-			$this->load->view('restaurantDetail_view/map');
-			$this->load->view('restaurantDetail_view/restaurantDetail', $data);
-			if(!empty($data['user_data']['logged_in']))
-			{
-				$this->load->view('restaurantDetail_view/submitReview', $data);
-			}
-			$this->load->view('templates/footer');
+			$this->load->view('restaurantDetail_view/submitReview', $data);
 		}
-		else
-		{
-			$data['reviewTitle'] = $this->input->post('reviewTitle');
-			$data['reviewText'] = $this->input->post('reviewText');
-			//$data['restaurantID'] existed
-			print_r($data['user_data']);
-			
-			
-			$this->restaurant_model->upload_review($data);
-			
-			$this->load->view('templates/header');
-			$this->load->view('templates/navigation', $user_data);
-			$this->load->view('search_view/search');
-			$this->load->view('restaurantDetail_view/map');
-			$this->load->view('restaurantDetail_view/restaurantDetail', $data);
-			if(!empty($data['user_data']['logged_in']))
-			{
-				$this->load->view('restaurantDetail_view/uploadSuccess');
-				$this->load->view('restaurantDetail_view/submitReview', $data);
-			}
-			$this->load->view('templates/footer');
-		}
-		
+		$this->load->view('templates/footer');
 	}	
 
-	
+	public function submitReview($restaurantID)
+	{
+		$data['reviewTitle'] = $this->input->post('reviewTitle');
+		$data['reviewText'] = $this->input->post('reviewText');
+		$data['user_data'] = $this->session->all_userdata();
+		$data['restaurantID'] = $restaurantID;
+		if(empty($data['reviewTitle']) or empty($data['reviewText'])) // jump to detail page without doing anything
+		{
+			$url = site_url('restaurantInfo/' . $restaurantID);  
+			echo "<script type='text/javascript'>";  
+			echo "window.location.href='$url'";  
+			echo "</script>";   
+		}
+		else // put data into DB and then jump to detail page
+		{
+			$this->load->view('templates/header');
+		}
+		
+		
+	}
 }
 ?>

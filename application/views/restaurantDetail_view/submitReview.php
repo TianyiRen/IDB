@@ -1,5 +1,5 @@
 <h2> Upload Review: </h2>
-<?php echo form_open('restaurantInfo/' . $restaurantID); ?>
+<?php echo form_open('submitReview/' . $restaurantID); ?>
 	<div>
 	Title: <input type="text" name="reviewTitle" cols="35"/>
 	</div>
