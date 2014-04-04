@@ -124,6 +124,24 @@ class User_model extends CI_Model
 		$dishReview = $this->db->query($dishReview);
 		return $dishReview = $dishReview->result_array();	
 	}
+	public function changePassword($userID, $userPwd)
+	{
+		$query = "
+					UPDATE Users
+					SET userPassword = '$userPwd'
+					WHERE userID = '$userID'
+				";
+		$this->db->query($query);
+	}
+	public function changeName($userID, $userName)
+	{
+		$query = "
+					UPDATE Users
+					SET userName = '$userName'
+					WHERE userID = '$userID'
+				";
+		$this->db->query($query);
+	}
 	
 }
 

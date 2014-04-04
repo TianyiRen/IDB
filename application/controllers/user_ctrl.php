@@ -171,11 +171,38 @@ class User_ctrl extends CI_Controller
 		$this->load->view('search_view/search');
 		$this->load->view('user_view/userProfile', $data);
 		$this->load->view('templates/footer');
-		
-
-		
-
-	
+	}
+	public function setting($userID)
+	{
+		$this->form_validation->set_rules('changeName', 'Name', 'required');
+		$this->form_validation->set_rules('changePassword', 'Password', 'required');
+		$user_data = $this->session->all_userdata();
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('templates/navigation', $user_data);
+			$this->load->view('user_view/setting', $user_data);
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$changePwd = $this->input->post('changePassword');
+			$changeName = $this->input->post('changeName');
+			$this->User_model->changePassword($userID,$changePwd);
+			$this->User_model->changeName($userID, $changeName);
+			$updated_Info = array(
+						'user_name'  => $changeName,
+						'user_ID' => $userID,
+						'user_email' => $user_data['user_email'],
+						'logged_in' => true
+						);
+			$this->session->set_userdata($updated_Info);
+			$url = site_url('search');  
+			echo "<script type='text/javascript'>";  
+			echo "window.location.href='$url'";  
+			echo "</script>"; 
+			
+		}
 	}
 	
 	
