@@ -49,6 +49,12 @@ class Restaurant_ctrl extends CI_Controller
 		$data['reviewText'] = $this->input->post('reviewText');
 		$data['user_data'] = $this->session->all_userdata();
 		$data['restaurantID'] = $restaurantID;
+		$data['Overall'] = $this->input->post('Overall');
+		$data['Price'] = $this->input->post('Price');
+		$data['Environment'] = $this->input->post('Environment');
+		$data['Services'] = $this->input->post('Services');
+		
+		
 		if(empty($data['reviewTitle']) or empty($data['reviewText'])) // jump to detail page without doing anything
 		{
 			$url = site_url('restaurantInfo/' . $restaurantID);  

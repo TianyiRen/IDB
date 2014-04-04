@@ -70,7 +70,10 @@ class Restaurant_model extends CI_Model
 		$reviewTitle = $data['reviewTitle'];
 		$reviewText = $data['reviewText'];
 		$postDate = date("m/d/y/h/i/s",time()); 
-		//echo $postDate;
+		$overall = $data['Overall'];
+		$price = $data['Price'];
+		$environment = $data['Environment'];
+		$services = $data['Services'];
 		
 		$reviewID = "SELECT max(TO_NUMBER(R.reviewID)) as max
 						FROM RestaurantReviews R";
@@ -82,13 +85,14 @@ class Restaurant_model extends CI_Model
 		$insertReview = "
 					INSERT INTO RestaurantReviews (reviewID, reviewTitle, reviewContent, reviewScore,
 													reviewPrice, environment, services)
-					VALUES ('$reviewID', '$reviewTitle', '$reviewText', 5, 5, 5, 5)
+					VALUES ('$reviewID', '$reviewTitle', '$reviewText', $overall, $price, $environment, $services)
 					";
 		$this->db->query($insertReview);
 		
+		//TAG ID = '0000000000' means user doesn't input any TAG.
 		$insertRT = "
 					INSERT INTO writtenTogetherRT (tagID, reviewID, userID, restaurantID, postedDate)
-					VALUES ('0000000005', '$reviewID', '$userID', '$restaurantID', TO_DATE('$postDate', 'mm/dd/yy/hh/mi/ss'))
+					VALUES ('0000000000', '$reviewID', '$userID', '$restaurantID', TO_DATE('$postDate', 'mm/dd/yy/hh/mi/ss'))
 					";
 		$this->db->query($insertRT);
 		

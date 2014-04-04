@@ -6,6 +6,40 @@
 	<div>
 	Text: <textarea name ="reviewText" rows="15" cols="35"></textarea>
 	</div>
+	
+	
+	Overall Score: <br />
+	<label><input name="Overall" type="radio" value=1 />1 </label> 
+	<label><input name="Overall" type="radio" value=2 />2 </label> 
+	<label><input name="Overall" type="radio" value=3 checked="true"/>3 </label> 
+	<label><input name="Overall" type="radio" value=4 />4 </label> 
+	<label><input name="Overall" type="radio" value=5 />5 </label> 
+	<br />
+	
+	Price: <br />
+	<label><input name="Price" type="radio" value=1 />1 </label> 
+	<label><input name="Price" type="radio" value=2 />2 </label> 
+	<label><input name="Price" type="radio" value=3 checked="true"/>3 </label> 
+	<label><input name="Price" type="radio" value=4 />4 </label> 
+	<label><input name="Price" type="radio" value=5 />5 </label> 
+	<br />
+	
+	Environment: <br />
+	<label><input name="Environment" type="radio" value=1 />1 </label> 
+	<label><input name="Environment" type="radio" value=2 />2 </label> 
+	<label><input name="Environment" type="radio" value=3 checked="true"/>3 </label> 
+	<label><input name="Environment" type="radio" value=4 />4 </label> 
+	<label><input name="Environment" type="radio" value=5 />5 </label> 
+	<br />
+	
+	Services: <br />
+	<label><input name="Services" type="radio" value=1 />1 </label> 
+	<label><input name="Services" type="radio" value=2 />2 </label> 
+	<label><input name="Services" type="radio" value=3 checked="true"/>3 </label> 
+	<label><input name="Services" type="radio" value=4 />4 </label> 
+	<label><input name="Services" type="radio" value=5 />5 </label> 
+	<br />
+	
 	<div>
 	<input type="submit" name="submitButton" value="Submit !!!" />
 	</div>
