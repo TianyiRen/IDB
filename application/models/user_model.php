@@ -104,7 +104,7 @@ class User_model extends CI_Model
 	public function getRestaurantReview($userID)
 	{
 		$restaurantReview = "
-					SELECT r.reviewID as ReviewID, r.reviewTitle as Title, r.reviewContent as Content, 
+					SELECT w.userID as UserID, r.reviewID as ReviewID, r.reviewTitle as Title, r.reviewContent as Content, 
 							r.reviewScore as Score, r.reviewPrice as Price, r.environment as Environment, r.services as Services
 					FROM writtenTogetherRT w, RestaurantReviews r 
 					WHERE w.userID = $userID AND w.reviewID = r.reviewID 
@@ -116,7 +116,7 @@ class User_model extends CI_Model
 	{
 		
 		$dishReview = "
-					SELECT d.reviewID as ReviewID, d.reviewTitle as Title, d.reviewContent as Content,
+					SELECT w.userID as UserID, d.reviewID as ReviewID, d.reviewTitle as Title, d.reviewContent as Content,
 							d.reviewScore as Score, d.reviewPrice as Price, d.taste as Taste, d.volumn as Volumn, d.look as Look
 					FROM writtenTogetherDT w, DishReviews d
 					WHERE w.userID = $userID AND w.reviewID = d.reviewID
@@ -142,6 +142,23 @@ class User_model extends CI_Model
 				";
 		$this->db->query($query);
 	}
+	public function deleteRReview($reviewID)
+	{
+		$query = "
+					DELETE FROM RestaurantReviews r
+					WHERE r.reviewID = $reviewID 
+					";
+		$this->db->query($query);
+	}
+	public function deleteDReview($reviewID)
+	{
+		$query = "
+					DELETE FROM DishReviews d
+					WHERE d.reviewID = $reviewID
+					";
+		$this->db->query($query);
+	}
+					
 	
 }
 

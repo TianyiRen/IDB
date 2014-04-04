@@ -172,6 +172,29 @@ class User_ctrl extends CI_Controller
 		$this->load->view('user_view/userProfile', $data);
 		$this->load->view('templates/footer');
 	}
+	public function deleteRReview($userID, $reviewID)
+	{
+		$this->User_model->deleteRReview($reviewID);
+		$data['restaurantReviewList'] = $this->User_model->getRestaurantReview($userID);
+		$user_data = $this->session->all_userdata();
+		$this->load->view('templates/header');
+		$this->load->view('templates/navigation', $user_data);
+		$this->load->view('search_view/search');
+		$this->load->view('user_view/deleteR', $data);
+		$this->load->view('templates/footer');	
+	}
+	public function deleteDReview($userID, $reviewID)
+	{
+		$this->User_model->deleteDReview($reviewID);
+		$data['dishReviewList'] = $this->User_model->getDishReview($userID);
+		$user_data = $this->session->all_userdata();
+		$this->load->view('templates/header');
+		$this->load->view('templates/navigation', $user_data);
+		$this->load->view('search_view/search');
+		$this->load->view('user_view/deleteD', $data);
+		$this->load->view('templates/footer');
+		
+	}
 	public function setting($userID)
 	{
 		$this->form_validation->set_rules('changeName', 'Name', 'required');
