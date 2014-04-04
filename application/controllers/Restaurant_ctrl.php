@@ -14,7 +14,10 @@ class Restaurant_ctrl extends CI_Controller
 	{
 		//load detail information of this restaurant from DB
 		$restaurantInfo = $this->restaurant_model->search_restaurant($restaurantID);
+		$photoInfo = $this->restaurant_model->search_photo($restaurantID);
+		
 		$data['restaurantInfo'] = $restaurantInfo;
+		$data['photoInfo'] = $photoInfo;
 		
 		//load detail information of the dishes in this restaurant from DB
 		$dishInfo = $this->restaurant_model->search_dish($restaurantID);
@@ -23,6 +26,7 @@ class Restaurant_ctrl extends CI_Controller
 		//load all reviews about this restaurant from DB
 		$rReviewInfo = $this->restaurant_model->search_rreview($restaurantID);
 		$data['rReviewInfo'] = $rReviewInfo;
+		
 		
 		//load session
 		$user_data = $this->session->all_userdata();
@@ -36,6 +40,14 @@ class Restaurant_ctrl extends CI_Controller
 		$this->load->view('search_view/search');
 		$this->load->view('restaurantDetail_view/map', $data);
 		$this->load->view('restaurantDetail_view/restaurantDetail', $data);
+		
+		if(!empty($photoInfo))
+		{
+			$path = $photoInfo[0]['PATH'];
+			$path = substr($path, -14);
+			$data['Path'] = $path;
+			$this->load->view('restaurantDetail_view/showPic', $data);
+		}
 		if(!empty($data['user_data']['logged_in']))
 		{
 			$this->load->view('restaurantDetail_view/submitReview', $data);

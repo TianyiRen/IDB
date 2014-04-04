@@ -80,8 +80,6 @@ class Restaurant_model extends CI_Model
 		$reviewID = $this->db->query($reviewID)->result_array();
 		$reviewID = (int)$reviewID[0]['MAX'] + 1;
 		$reviewID = (string)$reviewID;
-		
-		
 		$insertReview = "
 					INSERT INTO RestaurantReviews (reviewID, reviewTitle, reviewContent, reviewScore,
 													reviewPrice, environment, services)
@@ -96,6 +94,17 @@ class Restaurant_model extends CI_Model
 					";
 		$this->db->query($insertRT);
 		
+	}
+	public function search_photo($restaurantID)
+	{
+		$query = 	"SELECT
+						p.photoPath as Path, p.uploadDate as UploadDates, p.userID as UserID
+					FROM Photos p
+					WHERE TO_CHAR(p.category) = '1' AND p.restaurantID = $restaurantID
+					";
+		$result = $this->db->query($query);
+		$result = $result->result_array();
+		return $result;
 	}
 }
 

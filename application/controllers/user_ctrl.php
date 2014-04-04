@@ -92,7 +92,7 @@ class User_ctrl extends CI_Controller
 		if($this->form_validation->run() === FALSE)
 		 {
 			 $this->load->view('templates/header');
-			 //$this->load->view('templates/navigation', $user_data);
+			 $this->load->view('templates/navigation', $user_data);
 			 $this->load->view('user_view/signup');
 			 $this->load->view('templates/footer');
 		 }
@@ -108,7 +108,7 @@ class User_ctrl extends CI_Controller
 			if($signupResult['type']==='invalidPwd')
 			{
 				$this->load->view('templates/header');
-				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('templates/navigation', $user_data);
 				$this->load->view('user_view/signup');
 				$this->load->view('user_view/signupErrors/invalidPwd');
 				$this->load->view('templates/footer');	
@@ -116,7 +116,7 @@ class User_ctrl extends CI_Controller
 			else if($signupResult['type']==='retypePwd')
 			{
 				$this->load->view('templates/header');
-				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('templates/navigation', $user_data);
 				$this->load->view('user_view/signup');
 				$this->load->view('user_view/signupErrors/retypePwd');
 				$this->load->view('templates/footer');		
@@ -124,7 +124,7 @@ class User_ctrl extends CI_Controller
 			else if($signupResult['type'] === 'alreadyExists')
 			{
 				$this->load->view('templates/header');
-				//$this->load->view('templates/navigation', $user_data);
+				$this->load->view('templates/navigation', $user_data);
 				$this->load->view('user_view/signup');
 				$this->load->view('user_view/signupErrors/alreadyExists');
 				$this->load->view('templates/footer');
@@ -161,5 +161,28 @@ class User_ctrl extends CI_Controller
 			}
 		}
 	}
+	public function userProfile($userID)
+	{	
+		$data['restaurantReviewList'] = $this->User_model->getRestaurantReview($userID);
+		$data['dishReviewList'] = $this->User_model->getDishReview($userID);
+		$user_data = $this->session->all_userdata();
+		$this->load->view('templates/header');
+		$this->load->view('templates/navigation', $user_data);
+		$this->load->view('search_view/search');
+		$this->load->view('user_view/userProfile', $data);
+		$this->load->view('templates/footer');
+		
+
+		
+
+	
+	}
+	
+	
+	
+	
+	
+	
+	
 }
 ?>

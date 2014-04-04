@@ -1,4 +1,5 @@
 <?php echo form_open('signup'); ?>
+<h2>Registration</h2>
 <ul>
 	<li>Email: <input type="email" name="userEmail" /></li>
 	<li>Name: <input type="text" name="userName" /></li>
