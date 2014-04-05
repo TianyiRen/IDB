@@ -6,6 +6,7 @@ class Restaurant_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	
 	//load detail information of this restaurant by ID from DB
 	public function search_restaurant($ID)
 	{
@@ -21,6 +22,7 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	
 	//load detail information of the dishes in this restaurant by ID from DB
 	public function search_dish($ID)
 	{
@@ -33,6 +35,8 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	
+	//search selected restaurant reviews from DB
 	public function search_rreview($ID)	
 	{
 		$query = "
@@ -48,6 +52,8 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+	
+	//search selected restaurant dish reviews from DB
 	public function search_dreview($ID)
 	{
 		$query = "
@@ -64,6 +70,7 @@ class Restaurant_model extends CI_Model
 		return $result->result_array();
 	}
 	
+	//insert a restaurant review into DB
 	public function upload_review($data)
 	{
 		$userID = $data['user_data']['user_ID'];
@@ -99,6 +106,8 @@ class Restaurant_model extends CI_Model
 			$this->db->query($insertRT);	
 		}	
 	}
+	
+	//search a photo of a restaurant from DB
 	public function search_photo($restaurantID)
 	{
 		$query = 	"SELECT
@@ -110,6 +119,8 @@ class Restaurant_model extends CI_Model
 		$result = $result->result_array();
 		return $result;
 	}
+	
+	//search all tag name from DB
 	public function search_all_tags()
 	{
 		$query = "
@@ -118,6 +129,8 @@ class Restaurant_model extends CI_Model
 				";
 		return $this->db->query($query)->result_array();	
 	}
+	
+	//search the times of posted restaurant tags from DB
 	public function search_rtags($restaurantID)
 	{
 		$query = "
@@ -128,6 +141,8 @@ class Restaurant_model extends CI_Model
 				";
 		return $this->db->query($query)->result_array();
 	}
+	
+	//search the times of posted dish tags from DB
 	public function search_dtags($dishID)
 	{
 		$query = "

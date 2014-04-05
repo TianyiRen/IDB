@@ -142,9 +142,9 @@ class User_ctrl extends CI_Controller
 			{
 			}
 			
-			else //success
+			//sign up succeed
+			else 
 			{
-				
 				$signup_Info = array(
 						'user_name'  => $signupResult['name'],
 						'user_ID' => $signupResult['ID'],
@@ -161,6 +161,7 @@ class User_ctrl extends CI_Controller
 			}
 		}
 	}
+	//show user profile page
 	public function userProfile($userID)
 	{	
 		$data['restaurantReviewList'] = $this->User_model->getRestaurantReview($userID);
@@ -172,6 +173,8 @@ class User_ctrl extends CI_Controller
 		$this->load->view('user_view/userProfile', $data);
 		$this->load->view('templates/footer');
 	}
+	
+	//delete selected restaurant review
 	public function deleteRReview($userID, $reviewID)
 	{
 		$this->User_model->deleteRReview($reviewID);
@@ -183,6 +186,8 @@ class User_ctrl extends CI_Controller
 		$this->load->view('user_view/deleteR', $data);
 		$this->load->view('templates/footer');	
 	}
+	
+	//delete selected dish review
 	public function deleteDReview($userID, $reviewID)
 	{
 		$this->User_model->deleteDReview($reviewID);
@@ -195,6 +200,8 @@ class User_ctrl extends CI_Controller
 		$this->load->view('templates/footer');
 		
 	}
+	
+	//show user setting page
 	public function setting($userID)
 	{
 		$this->form_validation->set_rules('changeName', 'Name', 'required');

@@ -101,6 +101,7 @@ class User_model extends CI_Model
 		return $resData;
 	}
 	
+	// show all restaurant reviews the loggin user wrote in Profile page
 	public function getRestaurantReview($userID)
 	{
 		$restaurantReview = "
@@ -116,6 +117,7 @@ class User_model extends CI_Model
 		return $restaurantReview->result_array();
 	}
 	
+	//show all dish reviews the loggin user wrote in Profile page
 	public function getDishReview($userID)
 	{
 		
@@ -130,6 +132,7 @@ class User_model extends CI_Model
 		return $dishReview = $dishReview->result_array();	
 	}
 
+	
 	public function changePassword($userID, $userPwd)
 	{
 		$query = "

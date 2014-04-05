@@ -10,6 +10,8 @@ class Restaurant_ctrl extends CI_Controller
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 	}
+	
+	//show detailed information of a restaurant in restaurant detail page
 	public function viewRes($restaurantID)
 	{
 		//load detail information of this restaurant from DB
@@ -66,7 +68,8 @@ class Restaurant_ctrl extends CI_Controller
 		}
 		$this->load->view('templates/footer');
 	}	
-
+	
+	//submit new review in restaurant detail page
 	public function submitReview($restaurantID)
 	{
 		$data['reviewTitle'] = $this->input->post('reviewTitle');
