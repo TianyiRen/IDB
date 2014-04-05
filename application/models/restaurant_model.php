@@ -89,12 +89,15 @@ class Restaurant_model extends CI_Model
 		$this->db->query($insertReview);
 		
 		//TAG ID = '0000000000' means user doesn't input any TAG.
-		$insertRT = "
+		$tags = $data['Tags'];
+		foreach($tags as $tagID)
+		{	
+			$insertRT = "
 					INSERT INTO writtenTogetherRT (tagID, reviewID, userID, restaurantID, postedDate)
-					VALUES ('0000000000', '$reviewID', '$userID', '$restaurantID', TO_DATE('$postDate', 'mm/dd/yy/hh/mi/ss'))
+					VALUES ('$tagID', '$reviewID', '$userID', '$restaurantID', TO_DATE('$postDate', 'mm/dd/yy/hh/mi/ss'))
 					";
-		$this->db->query($insertRT);
-		
+			$this->db->query($insertRT);	
+		}	
 	}
 	public function search_photo($restaurantID)
 	{
@@ -106,6 +109,33 @@ class Restaurant_model extends CI_Model
 		$result = $this->db->query($query);
 		$result = $result->result_array();
 		return $result;
+	}
+	public function search_all_tags()
+	{
+		$query = "
+					SELECT t.tagID as TagID, t.tagcontent as TagContent
+					FROM tags t
+				";
+		return $this->db->query($query)->result_array();	
+	}
+	public function search_rtags($restaurantID)
+	{
+		$query = "
+					SELECT t.tagID as TagID, t.tagContent as TagContent, count(t.tagID) as Count
+					FROM writtenTogetherRT w, tags t
+					WHERE w.restaurantID = $restaurantID AND w.tagID = t.tagID
+					GROUP BY t.tagID, t.tagContent
+				";
+		return $this->db->query($query)->result_array();
+	}
+	public function search_dtags($dishID)
+	{
+		$query = "
+					SELECT t.tagID as TagID, t.tagContent as TagContent
+					FROM writtenTogetherDT w, tags t
+					WHERE w.dishID = $dishID AND w.tagID = t.tagID
+				";
+		return $this->db->query($query)->result_array();
 	}
 }
 

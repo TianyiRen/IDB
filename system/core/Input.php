@@ -724,19 +724,38 @@ class CI_Input {
 	* @param	string
 	* @return	string
 	*/
-	function _clean_input_keys($str)
-	{
-		if ( ! preg_match("/^[a-z0-9:_\/-]+$/i", $str))
-		{
-			exit('Disallowed Key Characters.');
-		}
+	// function _clean_input_keys($str)
+	// {
+		// if ( ! preg_match("/^[a-z0-9:_\/-]+$/i", $str))
+		// {
+			// exit('Disallowed Key Characters.');
+		// }
 
+		//Clean UTF-8 if supported
+		// if (UTF8_ENABLED === TRUE)
+		// {
+			// $str = $this->uni->clean_string($str);
+		// }
+
+		// return $str;
+	// }
+	
+	public function _clean_input_keys($str)
+	{
+		
+		$config = &get_config('config'); 
+		if (!empty($config['permitted_uri_chars']))
+		{
+			if ( ! preg_match("/^[".$config['permitted_uri_chars']."]+$/i", rawurlencode($str))) 
+			{
+				exit('Disallowed Key Characters.'); 
+			}
+		}
 		// Clean UTF-8 if supported
 		if (UTF8_ENABLED === TRUE)
 		{
 			$str = $this->uni->clean_string($str);
 		}
-
 		return $str;
 	}
 

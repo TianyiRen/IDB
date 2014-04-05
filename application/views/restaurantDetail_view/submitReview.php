@@ -40,6 +40,14 @@
 	<label><input name="Services" type="radio" value=5 />5 </label> 
 	<br />
 	
+	Tags
+	<?php foreach ($allTags as $tag_item): ?>
+	<?php $tagID = $tag_item['TAGID'] ;
+		 $tagContent = $tag_item['TAGCONTENT'] ; ?>
+		<input type="checkbox" name="tagbox[]" value="<?php echo $tagID?>" /><?php echo $tagContent; ?>
+	<?php endforeach ?>
+	
+
 	<div>
 	<input type="submit" name="submitButton" value="Submit !!!" />
 	</div>

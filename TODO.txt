@@ -1,6 +1,6 @@
 1. Signup部分检测用户输入格式完全正确的代码未完成
-2. TAG设置一个特殊值, 比如ID=00000000000, 表示用户没有输入TAG
-3. dishre view, restaurant review 对应的restaurant name 显示出来; 
+//2. TAG设置一个特殊值, 比如ID=00000000000, 表示用户没有输入TAG
+3. dish review, restaurant review 对应的restaurant name 显示出来; 
 5. 不存的ID 错误提示
 //6. Setting Page: change name and password.
-7. profile: User can delete old reviews
+//7. profile: User can delete old reviews

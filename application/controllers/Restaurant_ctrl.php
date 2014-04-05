@@ -27,6 +27,10 @@ class Restaurant_ctrl extends CI_Controller
 		$rReviewInfo = $this->restaurant_model->search_rreview($restaurantID);
 		$data['rReviewInfo'] = $rReviewInfo;
 		
+		//load all tags related to the restaurant 
+		$rtagInfo = $this->restaurant_model->search_rtags($restaurantID);
+		$data['rtagInfo'] = $rtagInfo;
+		
 		
 		//load session
 		$user_data = $this->session->all_userdata();
@@ -57,6 +61,8 @@ class Restaurant_ctrl extends CI_Controller
 		//If user has already logged in, show the text box of adding a comment of this restaurant.
 		if(!empty($data['user_data']['logged_in']))
 		{
+			$allTags = $this->restaurant_model->search_all_tags();
+			$data['allTags'] = $allTags;
 			$this->load->view('restaurantDetail_view/submitReview', $data);
 		}
 		$this->load->view('templates/footer');
@@ -73,6 +79,10 @@ class Restaurant_ctrl extends CI_Controller
 		$data['Environment'] = $this->input->post('Environment');
 		$data['Services'] = $this->input->post('Services');
 		
+		$data['Tags'] = $this->input->post('tagbox');
+		//print_r($data['Tags']);
+		
+		
 		
 		if(empty($data['reviewTitle']) or empty($data['reviewText'])) // jump to detail page without doing anything
 		{
@@ -84,10 +94,12 @@ class Restaurant_ctrl extends CI_Controller
 		else // put data into DB and then jump to detail page
 		{
 			$this->restaurant_model->upload_review($data);
-			$url = site_url('restaurantInfo/' . $restaurantID);  
-			echo "<script type='text/javascript'>";  
-			echo "window.location.href='$url'";  
-			echo "</script>";   
+			
+			
+			 $url = site_url('restaurantInfo/' . $restaurantID);  
+			 echo "<script type='text/javascript'>";  
+			 echo "window.location.href='$url'";  
+			 echo "</script>";   
 		}
 		
 		

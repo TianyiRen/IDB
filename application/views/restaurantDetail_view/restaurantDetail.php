@@ -31,3 +31,16 @@
 	<br>
 	</div>
 <?php endforeach?>
+
+<h2> Tags: </h2>
+<?php foreach($rtagInfo AS $rtagInfoDetail) :?>
+	<div id="main" >
+	<?php $tagContent = $rtagInfoDetail['TAGCONTENT'];
+			$count = $rtagInfoDetail['COUNT'];
+		echo $tagContent;
+		echo "===>";
+		echo $count;
+		echo " Times";?>
+	<br>
+	</div>
+<?php endforeach?>
