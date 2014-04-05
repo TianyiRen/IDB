@@ -104,26 +104,32 @@ class User_model extends CI_Model
 	public function getRestaurantReview($userID)
 	{
 		$restaurantReview = "
-					SELECT w.userID as UserID, r.reviewID as ReviewID, r.reviewTitle as Title, r.reviewContent as Content, 
-							r.reviewScore as Score, r.reviewPrice as Price, r.environment as Environment, r.services as Services
-					FROM writtenTogetherRT w, RestaurantReviews r 
-					WHERE w.userID = $userID AND w.reviewID = r.reviewID 
+					SELECT DISTINCT w.userID as UserID, rr.reviewID as ReviewID, rr.reviewTitle as Title, rr.reviewContent as Content, 
+							rr.reviewScore as Score, rr.reviewPrice as Price, rr.environment as Environment, rr.services as Services, 
+							r.restaurantName as RestaurantName
+					FROM writtenTogetherRT w, RestaurantReviews rr, Restaurants r
+					WHERE w.userID = $userID AND w.reviewID = rr.reviewID AND w.restaurantID = r.restaurantID
 					";
-		$restaurantReview = $this->db->query($restaurantReview);
-		return $restaurantReview = $restaurantReview->result_array();
+		
+					
+		$restaurantReview = $this->db->query($restaurantReview);	
+		return $restaurantReview->result_array();
 	}
+	
 	public function getDishReview($userID)
 	{
 		
 		$dishReview = "
-					SELECT w.userID as UserID, d.reviewID as ReviewID, d.reviewTitle as Title, d.reviewContent as Content,
-							d.reviewScore as Score, d.reviewPrice as Price, d.taste as Taste, d.volumn as Volumn, d.look as Look
-					FROM writtenTogetherDT w, DishReviews d
-					WHERE w.userID = $userID AND w.reviewID = d.reviewID
+					SELECT DISTINCT w.userID as UserID, dr.reviewID as ReviewID, dr.reviewTitle as Title, dr.reviewContent as Content,
+							dr.reviewScore as Score, dr.reviewPrice as Price, dr.taste as Taste, dr.volumn as Volumn, dr.look as Look, 
+							r.restaurantName as RestaurantName
+					FROM writtenTogetherDT w, DishReviews dr, Dishes d, Restaurants r
+					WHERE w.userID = $userID AND w.reviewID = dr.reviewID AND d.dishID = w.dishID AND d.restaurantID = r.restaurantID
 					";
 		$dishReview = $this->db->query($dishReview);
 		return $dishReview = $dishReview->result_array();	
 	}
+
 	public function changePassword($userID, $userPwd)
 	{
 		$query = "

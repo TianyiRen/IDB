@@ -36,7 +36,7 @@ class Restaurant_model extends CI_Model
 	public function search_rreview($ID)	
 	{
 		$query = "
-					SELECT 	
+					SELECT 	DISTINCT
 							r.reviewTitle as TITLE,
 							r.reviewContent as CONTENT,
 							r.reviewScore as SCORE,

@@ -38,7 +38,6 @@ class Restaurant_ctrl extends CI_Controller
 		$data['restaurantID'] = $restaurantID;
 		
 		//show header, searchBox, restaurantView and footer
-		
 		$this->load->view('templates/header');
 		$this->load->view('templates/navigation', $user_data);
 		$this->load->view('search_view/search');
@@ -80,10 +79,6 @@ class Restaurant_ctrl extends CI_Controller
 		$data['Services'] = $this->input->post('Services');
 		
 		$data['Tags'] = $this->input->post('tagbox');
-		//print_r($data['Tags']);
-		
-		
-		
 		if(empty($data['reviewTitle']) or empty($data['reviewText'])) // jump to detail page without doing anything
 		{
 			$url = site_url('restaurantInfo/' . $restaurantID);  
