@@ -18,6 +18,7 @@ class Search_ctrl extends CI_Controller
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('templates/header');
+			//$this->load->view('templates/example');
 			$this->load->view('templates/navigation', $user_data);
 			$this->load->view('search_view/search');   
 			$this->load->view('templates/footer');
