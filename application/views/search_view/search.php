@@ -4,7 +4,7 @@
 	<input type="submit" name="searchButton" value="Search !!!" />
 	-->
 
-	<div class="input-group input-group-lg">
+	<div class="input-group input-group-lg" style="margin-bottom: 20px;">
 		<span class="input-group-addon">Keywords: </span>
 		<!--<input type="text" name="searchBox" />-->
 		<input type="text" class="form-control" name="searchBox" placeholder="Please input restaurant name or dish name">
