@@ -51,6 +51,7 @@ $route['user/(:any)'] = 'User_ctrl/userProfile/$1';
 $route['setting/(:any)'] = 'User_ctrl/setting/$1';
 $route['deleteRReview/(:any)/(:any)'] = 'User_ctrl/deleteRReview/$1/$2';
 $route['deleteDReview/(:any)/(:any)'] = 'User_ctrl/deleteDReview/$1/$2';
+$route['test'] = 'Restaurant_ctrl/test';
 //$route['search_view'] = 'Search_ctrl/search';
 //$route['users_view/login'] = 'users_ctl/login';
 //$route['users_ctl'] = 'users_ctl/login';

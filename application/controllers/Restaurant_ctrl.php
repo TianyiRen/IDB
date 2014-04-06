@@ -93,14 +93,16 @@ class Restaurant_ctrl extends CI_Controller
 		{
 			$this->restaurant_model->upload_review($data);
 			
-			
-			 $url = site_url('restaurantInfo/' . $restaurantID);  
-			 echo "<script type='text/javascript'>";  
-			 echo "window.location.href='$url'";  
-			 echo "</script>";   
+			$url = site_url('restaurantInfo/' . $restaurantID);  
+			echo "<script type='text/javascript'>";  
+			echo "window.location.href='$url'";  
+			echo "</script>";   
 		}
-		
-		
+	}
+	
+	public function test()
+	{
+		$this->load->view('restaurantDetail_view/test');
 	}
 }
 ?>
