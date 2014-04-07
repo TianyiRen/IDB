@@ -6,7 +6,7 @@
 			<?php foreach($restaurantReviewList as $restaurantReview_item): ?>
 				<div class="bs-callout bs-callout-info">
 					<h3><?php echo $restaurantReview_item['RESTAURANTNAME']?></h3>
-					<table class="table" style="table-layout:fixed;">
+					<table class="table table-condensed" style="table-layout:fixed;">
 						<tbody>
 							<tr>
 								<td style="width: 22%"><h4>Title: </h4></td>
