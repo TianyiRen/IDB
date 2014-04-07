@@ -1,4 +1,5 @@
-<h2> Upload Review: </h2>
+<h1 id="Info" class="page-header">Upload Reivew</h1>
+<p class="lead">Upload your review to help more customers.</p>
 <?php echo form_open('submitReview/' . $restaurantID); ?>
 	<div>
 	Title: <input type="text" name="reviewTitle" cols="35"/>

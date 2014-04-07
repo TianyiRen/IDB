@@ -1,6 +1,6 @@
-		<div class="col-md-4">
+			<br>
 			<?php $jpgPath = $Path?>
 			<img src= <?php echo "http://localhost/IDB/photos/" . $jpgPath?>>
-		</div>
-	</div>
-</div> <!-- container in Map.view-->
+		</div> <!-- col=6 in map.view>
+	</div> <!-- row in restDetail.view -->
+</div> <!-- container in restDetail.view-->
