@@ -1,10 +1,8 @@
 <div class="container">
+	<h1 id="download" class="page-header">Sign UP</h1>
+	<p class="lead">Use you email and password to sign up.</p>
 	<?php echo form_open('signup'); ?>
 		<form role="form">
-			<div class="row">
-				<h2>Registration</h2>
-				<br>
-			</div>
 			<div class="row">
 				<div class="col-xs-5">
 					<div class="form-group">

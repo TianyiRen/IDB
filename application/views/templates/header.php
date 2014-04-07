@@ -6,7 +6,9 @@
   <meta name="author" content="TianTian and AOAO">
   
   <!-- Bootstrap -->
-  <link href="http://localhost/IDB/disc/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost/IDB/disc/css/bootstrap.css" rel="stylesheet">
+  <!-- Documentation extras -->
+  <link href="http://localhost/IDB/disc/css/docs.min.css" rel="stylesheet">
 </head>
 
 <body>

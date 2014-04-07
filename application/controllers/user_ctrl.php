@@ -180,11 +180,18 @@ class User_ctrl extends CI_Controller
 		$this->User_model->deleteRReview($reviewID);
 		$data['restaurantReviewList'] = $this->User_model->getRestaurantReview($userID);
 		$user_data = $this->session->all_userdata();
+		
+		$url = site_url("user/$userID");  
+		echo "<script type='text/javascript'>";  
+		echo "window.location.href='$url'";  
+		echo "</script>";   
+		/*
 		$this->load->view('templates/header');
 		$this->load->view('templates/navigation', $user_data);
 		$this->load->view('search_view/search');
 		$this->load->view('user_view/deleteR', $data);
 		$this->load->view('templates/footer');	
+		*/
 	}
 	
 	//delete selected dish review
@@ -193,12 +200,18 @@ class User_ctrl extends CI_Controller
 		$this->User_model->deleteDReview($reviewID);
 		$data['dishReviewList'] = $this->User_model->getDishReview($userID);
 		$user_data = $this->session->all_userdata();
+		
+		$url = site_url("user/$userID");  
+		echo "<script type='text/javascript'>";  
+		echo "window.location.href='$url'";  
+		echo "</script>";
+		/*
 		$this->load->view('templates/header');
 		$this->load->view('templates/navigation', $user_data);
 		$this->load->view('search_view/search');
 		$this->load->view('user_view/deleteD', $data);
 		$this->load->view('templates/footer');
-		
+		*/
 	}
 	
 	//show user setting page

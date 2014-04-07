@@ -1,4 +1,6 @@
 <div class="container">
+	<h1 id="Login" class="page-header">Login</h1>
+	<p class="lead">Use you email and password to login website.</p>
 	<?php echo form_open('login'); ?>
 		<form role="form">
 			<div class="row">
