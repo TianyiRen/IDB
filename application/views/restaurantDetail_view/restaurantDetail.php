@@ -4,50 +4,44 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6">
-				<h2> Restaurant Info: </h2>
+			<h2>Restaurant Info:</h2>
+			<dl class="dl">
 				<?php foreach ($restaurantInfo[0] as $key=>$value): ?>
-				<div id="main" >
-					<?php echo $key . " ===> " . $value;?>
-				</div>
+				<dt><?php echo $key?></dt>
+				<dd><?php echo $value?></dd>
 				<?php endforeach ?>
-
-				<br>
-				<br>
-
-				<h2> Dish Info: </h2>
-				<?php foreach($dishInfo AS $dishDetail):?>
-					<div id="main" >
+			</dl>	
+				
+			<h2>Dish Info:</h2>
+			<dl class="dl">
+				<?php foreach ($dishInfo as $dishDetail): ?>
 					<?php foreach ($dishDetail as $key=>$value): ?>
-						<?php echo $key . " ===> " . $value;?>
+						<dt><?php echo $key?></dt>
+						<dd><?php echo $value?></dd>
 					<?php endforeach?>
-					</div>
-				<?php endforeach?>
-
-				<br>
-				<br>
-
-				<h2> Review Info: </h2>
-				<?php foreach($rReviewInfo AS $rReviewDetail):?>
-					<div id="main" >
+					<br>
+				<?php endforeach ?>
+			</dl>		
+				
+			<h2>Review Info:</h2>
+			<dl class="dl">
+				<?php foreach ($rReviewInfo as $rReviewDetail): ?>
 					<?php foreach ($rReviewDetail as $key=>$value): ?>
-						<div>
-						<?php echo $key . " ===> " . $value;?>
-						</div>
+						<dt><?php echo $key?></dt>
+						<dd><?php echo $value?></dd>
 					<?php endforeach?>
 					<br>
-					</div>
-				<?php endforeach?>
-
-				<h2> Tags: </h2>
-				<?php foreach($rtagInfo AS $rtagInfoDetail) :?>
-					<div id="main" >
-					<?php $tagContent = $rtagInfoDetail['TAGCONTENT'];
-							$count = $rtagInfoDetail['COUNT'];
-						echo $tagContent;
-						echo "===>";
-						echo $count;
-						echo " Times";?>
-					<br>
-					</div>
-				<?php endforeach?>
+				<?php endforeach ?>
+			</dl>	
+			
+			<h2>Tags:</h2>
+			<dl class="dl">
+				<?php foreach ($rtagInfo as $rtagInfoDetail): ?>
+					<?php $tagContent = $rtagInfoDetail['TAGCONTENT']; $count = $rtagInfoDetail['COUNT'];?>
+						<dt><?php echo $tagContent?></dt>
+						<dd><?php echo $count. " times"?></dd>
+				<br>
+				<?php endforeach ?>
+			</dl>	
+			
 		</div>
