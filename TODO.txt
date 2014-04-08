@@ -4,5 +4,5 @@
 5. 不存的ID 错误提示
 //6. Setting Page: change name and password.
 //7. profile: User can delete old reviews
-8. 提交评论时不勾选任何TAG会产生错误
+//8. 提交评论时不勾选任何TAG会产生错误
 

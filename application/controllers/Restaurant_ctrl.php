@@ -84,6 +84,10 @@ class Restaurant_ctrl extends CI_Controller
 		$data['Services'] = $this->input->post('Services');
 		
 		$data['Tags'] = $this->input->post('tagbox');
+		if(empty($data['Tags']))
+			$data['Tags'] = array("0000000000");
+		
+		
 		if(empty($data['reviewTitle']) or empty($data['reviewText'])) // jump to detail page without doing anything
 		{
 			$url = site_url('restaurantInfo/' . $restaurantID);  

@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'w4111b.cs.columbia.edu:1521/ADB';
+$db['default']['hostname'] = 'w4111c.cs.columbia.edu:1521/ADB';
 $db['default']['username'] = 'yl3055';
 $db['default']['password'] = 'RenTianyi';
 $db['default']['database'] = '';
