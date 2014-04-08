@@ -1,7 +1,4 @@
-<br>
-<br>
-<br>
-<br>
+
 <div class="container">		
 	<h1 id="Info" class="page-header">Upload Reivew</h1>
 	<p class="lead">Upload your review to help more customers.</p>		

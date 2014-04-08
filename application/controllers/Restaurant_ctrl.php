@@ -45,7 +45,6 @@ class Restaurant_ctrl extends CI_Controller
 		$this->load->view('search_view/search');
 		
 		$this->load->view('restaurantDetail_view/restaurantDetail', $data);
-		
 		$this->load->view('restaurantDetail_view/map', $data);
 		
 		//If a photo of this restaurant exists, show it
@@ -60,6 +59,8 @@ class Restaurant_ctrl extends CI_Controller
 			$data['Path'] = "nopic.jpg";
 		}
 		$this->load->view('restaurantDetail_view/showPic', $data);
+		
+		$this->load->view('restaurantDetail_view/existingReview', $data);
 		
 		//If user has already logged in, show the text box of adding a comment of this restaurant.
 		if(!empty($data['user_data']['logged_in']))
